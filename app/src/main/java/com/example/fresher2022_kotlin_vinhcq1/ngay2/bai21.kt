@@ -1,15 +1,11 @@
 package com.example.fresher2022_kotlin_vinhcq1.ngay2
 
+import java.util.*
+
 fun main(args: Array<String>) {
-    val test : Int = 18
-    var i : Int
-    var k : Int
-    var a : Boolean = false
-    for (i in 2..test/2 ) {
-        if (check(i) && check(test - i)) {
-            println("$test = $i + ${test - i}")
-        }
-    }
+    val scanner = Scanner(System.`in`)
+    val number = scanner.nextInt()
+    istotalPrime(number, ::check)
 }
 
 fun check(snt : Int) : Boolean {
@@ -19,4 +15,15 @@ fun check(snt : Int) : Boolean {
         if ( snt % i == 0) return false
     }
     return true
+}
+
+fun istotalPrime(n : Int, check : (Int) -> Boolean) {
+    var isPrime = false
+    for (i in 2..n/2) {
+        if (check(i) && check(n - i)) {
+            println("$i + ${n - i}")
+            isPrime = true
+        }
+    }
+    if(!isPrime) print("is not")
 }

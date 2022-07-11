@@ -1,16 +1,21 @@
 package com.example.fresher2022_kotlin_vinhcq1.ngay2
 
+import java.util.*
+
 fun main(args: Array<String>) {
-    var n : Int = readLine()!!.toInt()
-    print(tongchuso(n))
-}
-fun tongchuso(n : Int) : Int {
-    var sum = 0
-    var b = n
-    while(b != 0) {
-        var a = b % 10
-        sum += a
-        b /= 10
+    val scanner = Scanner(System.`in`)
+    val number = scanner.nextInt()
+    caculateSum(number) { number: Int ->
+        var sum = 0
+        var temp = number
+        while (temp > 0) {
+            sum += temp % 10
+            temp /= 10
+        }
+        sum
     }
-    return sum
+}
+
+fun caculateSum(number : Int, caculate: (Int) -> Int) {
+    println(caculate(number))
 }
